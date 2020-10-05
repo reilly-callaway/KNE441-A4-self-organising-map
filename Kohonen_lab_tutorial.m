@@ -76,7 +76,7 @@ echo on;
 pause
 
 for i=1:3
-   probe=rands(2,1);
+   probe=rands(2,1)
    hold on;
    plot(probe(1,1),probe(2,1),'.g','markersize',25);
    a=sim(net,probe);
