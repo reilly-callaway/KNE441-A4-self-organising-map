@@ -1,5 +1,9 @@
 function [net, normFailed, normExtreme, normHealthy] = A3(s1, s2, numIter)
 
+% Set seed for rand() to acheive repeatable results.
+rng('default');
+rng(2);
+
 %for testing
 %nita = 0.001;
 %nllaa = 0.259;
@@ -23,14 +27,16 @@ normHealthy = normData(:, 1+size(extremeBanks, 1):size(extremeBanks, 1)+size(hea
 normFailed = normData(:, end-size(failedBanks, 1)+1:end);
 
 net = newsom(normData, [s1 s2]);
-net.iw{1,1} = ones(size(net.iw{1,1}));
 
-%plotsom(net.iw{1,1},net.layers{1}.distances)
+% Use random initial weights
+% net.iw{1,1} = ones(size(net.iw{1,1}));
+net.iw{1,1} = rand(size(net.iw{1,1}));
 
 net.trainParam.showWindow = true;
 net.trainParam.epochs = numIter;
 net = train(net, normData);
-%plotsom(net.IW{1,1},net.layers{1}.distances);
+
+% plotsom(net.IW{1,1},net.layers{1}.distances);
 
 % View which nodes each data set triggers
 % plotsomhits(net, normExtreme);
