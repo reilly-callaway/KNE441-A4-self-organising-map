@@ -33,10 +33,10 @@ net = train(net, normData);
 %plotsom(net.IW{1,1},net.layers{1}.distances);
 
 % View which nodes each data set triggers
-plotsomhits(net, normExtreme);
-figure
-plotsomhits(net, normHealthy);
-figure
-plotsomhits(net, normFailed);
+% plotsomhits(net, normExtreme);
+% figure
+% plotsomhits(net, normHealthy);
+% figure
+% plotsomhits(net, normFailed);
 
 
